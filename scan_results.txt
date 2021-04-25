@@ -1,0 +1,4 @@
+[WARNING] C:\Users\ionut\source\repos\MalProtectAV\test1\test.py[May be malicious] 
+
+[WARNING] C:\Users\ionut\source\repos\MalProtectAV\test1\test.py[May be malicious] 
+
