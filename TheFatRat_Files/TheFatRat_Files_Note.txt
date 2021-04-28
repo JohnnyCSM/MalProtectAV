@@ -1,0 +1,6 @@
+TheFatRat_Files is used to store the .exe malicious files generated with TheFatRat tool.
+
+They could not be stored here because the Antivirus on my laptop detect them as viruses
+and move them to quarantine automatically.
+
+These files ... 
