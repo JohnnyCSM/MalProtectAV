@@ -78,6 +78,7 @@ def quarantine_from_results():
 def main():
     global values
     #Create the window
+    psg.theme('LightGrey4')
     layout = [[psg.Text('MalProtectAV', font='Any 15', text_color = 'black', background_color = 'white')],
               [psg.Text("Choose folder to scan: ", font='Any 15', text_color = 'black'), 
                psg.FolderBrowse(key = "dir_to_scan")],
@@ -87,7 +88,9 @@ def main():
               [psg.B('', image_data=scan_btn, button_color='white', key= 'Start'), 
                psg.Button('', image_data=results_btn, button_color='white', key= 'Results'), 
                psg.Button('', image_data=quarantine_btn, button_color='white', key= 'Quarantine'), 
-               psg.Button('', image_data=exit_btn, button_color='white', key= 'Exit')]]
+               psg.Button('', image_data=exit_btn, button_color='white', key= 'Exit')],
+              [psg.Text('Scan', pad=(35,0)), psg.Text('Results', pad=(35,0)), 
+               psg.Text('Quarantine', pad=(15,0)), psg.Text('Exit', pad=(45,0))]]
 
     window = psg.Window('MalProtect Antivirus', layout, background_color='white' )
 
