@@ -3,4 +3,4 @@ TheFatRat_Files is used to store the .exe malicious files generated with TheFatR
 They could not be stored here because the Antivirus on my laptop detect them as viruses
 and move them to quarantine automatically.
 
-These files ... 
+The files generated with TheFatRat would have been normally stored in TheFatRat_Files folder within the tool where the script is run. I could not provide them within this repository here as they are found as malicious. I can provide them through a different method on request if needed by the markers for testing.
