@@ -8,7 +8,7 @@ import PySimpleGUI as psg
 import os
 from malicious_codes_list import malicious_codes
 import shutil
-from btn_images import scan_btn, results_btn, quarantine_btn, exit_btn
+from btn_images import scan_btn, results_btn, quarantine_btn, remove_btn, exit_btn
 
 # Tool targets a list of executable files to check for malicious code
 target_files_ext = ('.py', '.exe', '.doc', '.docx', '.docm', '.xlsm', '.hta', '.html',
@@ -56,7 +56,7 @@ def scanner(window):
                                             quarantine_results.write(targeted_file + "\n\n")
                                             window.write_event_value('-SCAN-', (
                                                 'POSSIBLE FatRat FILE FOUND: ', targeted_file )) # Write process to screen
-    window.write_event_value('-SCAN-', 'Scan Complete.' + '\n') # Write process to screen
+                        window.write_event_value('-SCAN-', 'Scan Complete.' + '\n') # Write process to screen
 
 
 def see_results():
@@ -79,6 +79,11 @@ def quarantine_from_results():
                 continue
     print('Quarantined Files. Check quarantine!' + '\n') 
 
+def remove_from_quarantine():
+    quarantine = 'C:/Users/ionut/Desktop/quarantine' # quarantine path
+    for file in os.listdir(quarantine): #loop through files in quarantine
+        os.remove(os.path.join(quarantine, file)) # remove files from quarantine
+        print(file + ' has been removed.')
 
 def main():
     global values
@@ -96,9 +101,10 @@ def main():
               [psg.Button('', image_data=scan_btn, button_color='white', key= 'Start'), 
                psg.Button('', image_data=results_btn, button_color='white', key= 'Results'), 
                psg.Button('', image_data=quarantine_btn, button_color='white', key= 'Quarantine'), 
+               psg.Button('', image_data=remove_btn, button_color='white', key= 'Remove'),
                psg.Button('', image_data=exit_btn, button_color='white', key= 'Exit')],
               [psg.Text('Scan', pad=(35,0)), psg.Text('Results', pad=(35,0)), 
-               psg.Text('Quarantine', pad=(15,0)), psg.Text('Exit', pad=(45,0))]]
+               psg.Text('Quarantine', pad=(15,0)), psg.Text('Remove', pad=(35,0)), psg.Text('Exit', pad=(35,0))]]
 
     window = psg.Window('MalProtect Antivirus', layout, background_color='white' ) # Initialize the GUI window
 
@@ -112,6 +118,8 @@ def main():
             psg.cprint(f'{values[thread_process]}', colors='white on red')
         if event == 'Results': # Results
             see_results()
+        if event == 'Remove': # Remove
+            remove_from_quarantine()
         if event == 'Quarantine': # Quarantine
             quarantine_from_results()
     window.close()
